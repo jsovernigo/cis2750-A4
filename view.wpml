@@ -1,0 +1,7 @@
+.f(id="header").f(style="text-align: left; display: inline; float:left;").b(name="change",link="index.php",text="Change User").g().h(size=1,text="View Streams").g()
+.f(id="card").v().g()
+.f(id="card").b(id="post",name="post",link="post.php",text="Post").g()
+.z(id="post",dep="username").z(id="post",dep="stream")
+.z(id="command",dep="username").z(id="command",dep="stream")
+.z(id="switch",dep="username")
+.z(id="command",dep="first")

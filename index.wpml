@@ -1,0 +1,4 @@
+.f(id="header").h(size=1,text="Login or Add User").g()
+.t(text="<br>")
+.f(id="card").h(size=3,text="Login",style="text-align: center").i(action="view.php",text="Username:<br>",name="username",value="",id="gotoview").s(form="gotoview").g()
+.f(id="card").h(size=3,text="Add user to stream(s)",style="text-align: center").t(text="<div style="text-align: center">").i(action="addauthor.php",text="UserName:<br>",name="username",value="").g().g()

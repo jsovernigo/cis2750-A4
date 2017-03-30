@@ -1,0 +1,3 @@
+.f(id="header").h(size=1,text="Change Streams").g()
+.f(id="card").t(text="Select a new Stream:<br>").t(file="switch.html").s(form="switch").t(text="<input type="submit" value="change"></form>").g()
+.z(id="switch",dep="username")

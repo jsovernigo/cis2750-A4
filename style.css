@@ -1,0 +1,50 @@
+body
+{
+	padding: 0;
+	margin: 0;
+	background #ffffff;
+}
+
+#header
+{
+	height: 70px;
+	width: 100%;
+	padding: 5px 5px 5px 5px;
+	margin: 0;
+	margin-bottom: 10px;
+	text-align: center;
+
+	background: #0d68a5;
+	color: white;
+	font-family: "arial";
+}
+
+#card
+{
+	padding: 10px;
+	margin-top: 10px;
+	margin-right: 20%;
+	margin-left: 20%;
+
+	text-align: left;
+	background: #ffffff;
+	color: black;
+
+	border: solid 1px lightgray;
+	border-bottom: solid 2px;
+}
+
+#view
+{
+	padding: 10px;
+	margin-top: 10px;
+	margin-right: 10%;
+	margin-left: 10%;
+	margin-bottom: 20px;
+	text-align: left;
+
+	background: #ffffff;
+	color: black;
+	border: solid 1px lightgray;
+	border-bottom: solid 2px;
+}
