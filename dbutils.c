@@ -188,13 +188,12 @@ int getPostN(char* username, char* stream, char* order, int n, MYSQL* sql)
 
 	if(strcmp(stream, "all") == 0)
 	{
-
-		sprintf(query, "select * from posts order by %s", order);
+		sprintf(query, "select post from posts order by %s", order);
 		mysql_query(sql, query);
 	}
 	else
 	{
-		sprintf(query, "select * from posts where stream='%s' order by %s", stream, order);
+		sprintf(query, "select post from posts where stream='%s' order by %s", stream, order);
 		mysql_query(sql, query);
 	}
 
@@ -208,8 +207,11 @@ int getPostN(char* username, char* stream, char* order, int n, MYSQL* sql)
 	row = mysql_fetch_row(result);
 
 	/* this is the correct row, and also the post segment. */
-	puts(row[3]);
-	setLastRead(username, stream, n, sql);
+	puts(row[0]);
+	if(strcmp(stream, "all") != 0)
+	{
+		setLastRead(username, stream, n, sql);
+	}
 
 	return 0;
 }
@@ -223,7 +225,7 @@ int getStreams(char* username, MYSQL* sql)
 
 	allStreams[0] = '\0';
 
-	sprintf(query, "select stream from users where username='%s'", username);
+	sprintf(query, "select distinct stream from users");
 
 	mysql_query(sql, query);
 
@@ -231,8 +233,12 @@ int getStreams(char* username, MYSQL* sql)
 
 	while((row = mysql_fetch_row(result)))
 	{
-
+		strcat(allStreams, row[0]);
+		strcat(allStreams, ",");
 	}
+	allStreams[strlen(allStreams) - 1] = '\0';
+
+	puts(allStreams);
 
 	return 0;
 }

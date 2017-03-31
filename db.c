@@ -99,6 +99,10 @@ int main(int argc, char** argv)
 		nposts = numposts(stream, &mysql);
 		printf("%d\n", nposts);
 	}
+	else if(strcmp(command, "streams") == 0)
+	{
+		getStreams(username, &mysql);	
+	}
 
 	if(result != 0)
 	{

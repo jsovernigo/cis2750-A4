@@ -830,20 +830,17 @@ char* createSelector(char* selTag)
 
 
 	strcat(buffer, "<?php\n");
-	strcat(buffer, "$files = scandir(\"./messages\");\n");
-	strcat(buffer, "$streams = array();\n");
-
-	strcat(buffer, "foreach($files as $fn)\n{\n");
-	strcat(buffer, "if(strpos($fn, \"StreamUsers\") !== false)\n{\n");
-	strcat(buffer, "$streams[] = substr($fn, 0, strlen($fn) - 11);");
-	strcat(buffer, "\n}\n}\n");
+	strcat(buffer, "$streamsraw = shell_exec(\"./db streams \\\"\".$_POST[\"username\"].\"\\\" strm 0 pdate\");\n");
+	strcat(buffer, "$streams = explode(',', $streamsraw, 100);\n");
 
 	strcat(buffer, "echo \"<select ");
 	strcat(buffer, tagArgs);
 	strcat(buffer, " name=\\\"stream\\\" form=\\\"");
 	strcat(buffer, formBuffer);
 	strcat(buffer, "\\\">\\n\";\n");
+
 	strcat(buffer, "foreach($streams as $stream)\n{\n");
+	strcat(buffer, "$stream = trim($stream);\n");
 	strcat(buffer, "echo \"<option value=\\\"$stream\\\">$stream</option>\\n\";\n}\n");
 	strcat(buffer, "echo \"<option value=\\\"all\\\">all</option>\";");
 	strcat(buffer, "echo \"</select><br>\\n\";\n");
@@ -936,10 +933,9 @@ char* createAdd(char* addTag)
 	strcat(buffer, "<?php\n");
 	strcat(buffer, " echo \"<form id=\\\"adduser\\\" method=\\\"post\\\" action=\\\"addauthor.php\\\">\";\n");
 	strcat(buffer, "echo \"<input type=\\\"text\\\" name=\\\"newstreams\\\"><br>\";\n");
-	strcat(buffer, "$files = scandir(\"./messages\");\n");
-	strcat(buffer, "$streams = array();\n");
-	strcat(buffer, "foreach($files as $fn)\n{\n if(strpos($fn, \"StreamUsers\") !== false)\n{\n $streams[] = substr($fn, 0, strlen($fn) - 11);\n}\n}\n");
-	strcat(buffer, "foreach($streams as $stream)\n{\n echo \"<input type=\\\"checkbox\\\" name=\\\"streams[]\\\" value=\\\"$stream\\\">$stream<br>\";\n}\n");
+	strcat(buffer, "$streamsraw = shell_exec(\"./db streams \\\"\".$_POST[\"username\"].\"\\\" strm 0 pdate\");\n");
+	strcat(buffer, "$streams = explode(',', $streamsraw);\n");
+	strcat(buffer, "foreach($streams as $stream)\n{\n $stream = trim($stream); echo \"<input type=\\\"checkbox\\\" name=\\\"streams[]\\\" value=\\\"$stream\\\">$stream<br>\";\n}\n");
 	strcat(buffer, "echo \"<input type=\\\"submit\\\" value=\\\"add\\\" name=\\\"action\\\"><input type=\\\"submit\\\" value=\\\"remove\\\" name=\\\"action\\\">\";\n");
 	strcat(buffer, "echo \"</form>\";\n?>");
 	

@@ -25,6 +25,8 @@ if(isset($_POST["action"]))
 		{
 			$sstring = substr($sstring, 0, -1);
 		}
+		$sstring = trim($sstring);
+		$sstring = str_replace(' ', '', $sstring);
 		exec("./addauthor $username $sstring", $aout, $ares);
 	}
 	elseif($_POST["action"] == "remove")

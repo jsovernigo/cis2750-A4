@@ -10,7 +10,7 @@
 <?php
 
 /* recalculate $length every time. */
-$length = shell_exec("./view.py ".$_POST["username"]." ".$_POST["stream"]." 0 pdate len");
+$length = shell_exec("./view.py \"".$_POST["username"]."\" ".$_POST["stream"]." 0 pdate len");
 
 $index = '0';
 $order= 'pdate';
@@ -25,7 +25,8 @@ if(!isset($_POST["index"]))
 	}
 	else
 	{
-		$eres = shell_exec("./view.py ".$_POST["username"]." ".$_POST["stream"]." 0 pdate last");
+		$eres = shell_exec("./view.py \"".$_POST["username"]."\" ".$_POST["stream"]." 0 pdate last");
+
 		$index = $eres;
 	}
 }
@@ -72,7 +73,7 @@ if(isset($_POST["userin"]))
 
 	if($command == "mark")
 	{
-		$res = shell_exec("./view.py ".$_POST["username"]." ".$_POST["stream"]." ".$_POST["order"]." mark");
+		$res = shell_exec("./view.py \"".$_POST["username"]."\" \"".$_POST["stream"]."\" \"".$_POST["order"]."\" mark");
 	}
 
 	elseif($command == "order")
@@ -83,7 +84,7 @@ if(isset($_POST["userin"]))
 		}
 		elseif($order === 'username')
 		{
-			$order = 'date';
+			$order = 'pdate';
 		}
 		$index = 0;
 	}
@@ -92,7 +93,7 @@ if(isset($_POST["userin"]))
 $username = $_POST["username"];
 $stream = $_POST["stream"];
 
-$cmd = "./view.py '$username' '$stream' '$index' '$order' view";
+$cmd = "./view.py '$username' '$stream' '$index' '$order' 'view'";
 $post = shell_exec($cmd);#"./view.py julian bunnies 0 date view");
 
 str_replace("\n", "<br>", $post);

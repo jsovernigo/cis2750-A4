@@ -3,7 +3,7 @@ CCON	=./a1
 CFLAGS	=-ansi -Wall -g
 TFLAGS	=-Wall -pedantic -Wextra -Werror -ansi -g
 COBJECTS=driver.o classToStruct.o parseFile.o recognize.o vector.o
-OBJECTS	=stream.o post.o tags.o generation.o
+OBJECTS	=stream.o post.o tags.o generation.o dbutils.o
 EXEC1 	=post
 EXEC2	=addauthor
 EXEC3	=create
@@ -25,7 +25,6 @@ all: build
 # This is the normal compilation rule.  Simply typing 'make' will run this
 #
 build: cconverter post libstream.a addAuthor view.py create database
-	mkdir -p ./messages/
 
 #
 # Large-scale macros

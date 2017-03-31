@@ -111,7 +111,7 @@ int addUser(char* username, char* list)
 			buffer[cpos] = '\0';
 			query[0] = '\0';
 
-			if(buffer[cpos - 1] == ',')
+			if(buffer[cpos - 1] == ',' || buffer[cpos - 1] == ' ')
 			{
 				buffer[cpos - 1] = '\0';
 			}

@@ -13,7 +13,7 @@ include "interpret.php";
 
 if(isset($_POST["postpressed"]))
 {
-	exec("./post \"".$_POST["username"]."\" ".$_POST["stream"]." \"".$_POST["post"]."\n\"", $pout, $pres);
+	exec("./post \"".$_POST["username"]."\" \"".$_POST["stream"]."\" \"".$_POST["post"]."\n\"", $pout, $pres);
 
 	echo "<div id=\"card\">";
 	if($pres > 0)

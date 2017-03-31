@@ -7,14 +7,15 @@ body
 
 #header
 {
-	height: 70px;
+	height: 60px;
 	width: 100%;
 	padding: 5px 5px 5px 5px;
 	margin: 0;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	text-align: center;
+	border-bottom: solid 2px #094e7c;
 
-	background: #0d68a5;
+	background: linear-gradient(#0d68a5, #063859);
 	color: white;
 	font-family: "arial";
 }
@@ -31,7 +32,7 @@ body
 	color: black;
 
 	border: solid 1px lightgray;
-	border-bottom: solid 2px;
+	border-bottom: solid 2px gray;
 }
 
 #view

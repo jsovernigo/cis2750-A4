@@ -1,8 +1,8 @@
 *************************************************
 Julian Sovernigo            0948924
 gsoverni@mail.uoguelph.ca
-CIS2750_W17                 A2: Minor Messaging
-2/17/2017
+CIS2750_W17                 A4: SQL and Messages
+3/31/2017
 *************************************************
 
 ******************
@@ -28,12 +28,7 @@ Running the program
 ********************
 
 1- cd to the root folder of the program
-2- 3 programs, post, addauthor, and view.py exist.
-	a- post exists to post files to the message streams.
-	b- addauthor adds authors to the userfiles, which allows for them
-		to post and read to those streams they are actually in.
-	c- view.py is used to view the posts in an 80x24 character
-		terminal window.
+2- 3 programs, post, addauthor, and view.py exist, as well as db.
 
 ************
 Limitations
@@ -48,3 +43,18 @@ safe to use.
 	Also please note that he change author, and the add/remove author page
 is available through the same button in the top left hand corner. This was
 done to preserve the propogation of values between pages.
+
+	It is also possible to manipulate the user into being able to post in
+a stream that they do not belong to.  This can be done by:
+	- logging in as a user 'A'
+	- selecting stream '1'
+	- logging in another tab as user 'B'
+	- selecting stream '1'
+	- posting as 'B' to '1'
+	- entering the post screen as user 'A' for '1'
+	- removing user 'A' from stream '1', using 'B''s tab
+	- posting as 'A' in the now locked stream.
+	This sequence can be used to break the way the post-read cycle operates,
+allowing the desynchronization and eventual damage to the database (causes
+permenant seg-faults as user 'A', since the user still has a registered last-
+read field in his info section.
